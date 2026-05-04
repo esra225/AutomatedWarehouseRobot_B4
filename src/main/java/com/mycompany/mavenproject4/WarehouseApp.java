@@ -4,26 +4,27 @@
 
 package com.mycompany.mavenproject4;
 
-/**
- *
- * @author DELL
- */
+
 public class WarehouseApp {
     public static void main(String[] args) {
-        // إنشاء طرد أصلي
-        Package p1 = new Package("شاشات", 25.5);
+        // 1. Singleton: Access the central registry
+        WarehouseRegistry registry = WarehouseRegistry.getInstance();
+
+        // 2. Prototype: Create a package and clone it
+        Package originalPkg = new Package("LED Screens", 25.5);
+        Package clonedPkg = originalPkg.clone();
         
-        // استخدام الـ Prototype لنسخ الطرد
-        Package p2 = p1.clone(); 
+        // 3. Composite: Organize them into a shelf
+        Shelf electronicsShelf = new Shelf("Electronics Section");
+        electronicsShelf.addComponent(originalPkg);
+        electronicsShelf.addComponent(clonedPkg);
         
-        // استخدام الـ Composite لتنظيمهم في رف
-        Shelf shelf1 = new Shelf("قسم الإلكترونيات");
-        shelf1.addComponent(p1);
-        shelf1.addComponent(p2);
+        // 4. Store in the Singleton
+        registry.addComponent(electronicsShelf);
         
-        // عرض النتائج
-        System.out.println("--- نظام إدارة المستودع الذكي ---");
-        shelf1.showDetails();
-        System.out.println("إجمالي الوزن في الرف: " + shelf1.getWeight() + " كجم");
+        // 5. Execution
+        System.out.println("--- Automated Warehouse Robot System ---");
+        registry.displayAllInventory();
+        System.out.println("Total Calculated Weight: " + electronicsShelf.getWeight() + " kg");
     }
 }

@@ -23,7 +23,7 @@ public class Package implements WarehouseComponent, Cloneable {
 
     @Override
     public void showDetails() {
-        System.out.println("  - طرد: " + name + " | الوزن: " + weight + " كجم");
+        System.out.println("  - Package: " + name + " | Weight: " + weight + " kg");
     }
 
     @Override
