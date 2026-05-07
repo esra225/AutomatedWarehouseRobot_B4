@@ -31,7 +31,7 @@ public class Shelf implements WarehouseComponent {
 
     @Override
     public void showDetails() {
-        System.out.println("الرف المجمع: " + shelfName);
+        System.out.println("Shelf Composite: " + shelfName);
         for (WarehouseComponent item : items) {
             item.showDetails();
         }
