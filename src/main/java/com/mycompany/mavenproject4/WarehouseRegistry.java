@@ -14,6 +14,7 @@ import java.util.List;
 public class WarehouseRegistry {
     private static WarehouseRegistry instance;
     private List<WarehouseComponent> allComponents;
+    private java.util.List<String> logs = new java.util.ArrayList<>();
 
     private WarehouseRegistry() {
         allComponents = new ArrayList<>();
@@ -36,4 +37,12 @@ public class WarehouseRegistry {
             comp.showDetails();
         }
     }
+    public void addLog(String message) {
+    logs.add(message);
+}
+
+public String getLogs() {
+    return String.join("\n", logs);
+}
+    
 }
