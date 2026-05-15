@@ -158,7 +158,22 @@ Package original = new Package("Medical Kit", 10.5);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // 1. جلب كل السجلات المخزنة في الـ Singleton
+    String allLogs = inventory.getLogs();
+    
+    // 2. تنظيف مربع النص (txtOutput) لتهيئته للعرض
+    txtOutput.setText(""); 
+    txtOutput.append("=== [Warehouse System Logs] ===\n");
+    
+    // 3. التحقق إذا كانت هناك سجلات أم لا
+    if (allLogs == null || allLogs.isEmpty()) {
+        txtOutput.append("No activity recorded yet.\n");
+    } else {
+        txtOutput.append(allLogs);
+    }
+    
+   
+    txtOutput.append("\n===============================");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
